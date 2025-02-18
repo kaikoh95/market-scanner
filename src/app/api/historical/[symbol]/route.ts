@@ -3,9 +3,9 @@ import yahooFinance from "yahoo-finance2";
 
 export async function GET(
   request: Request,
-  { params }: { params: { symbol: string } }
+  context: { params: Promise<{ symbol: string }> }
 ) {
-  const { symbol } = params;
+  const { symbol } = await context.params;
   const { searchParams } = new URL(request.url);
   const time_range = searchParams.get("time_range") || "day";
 
@@ -51,7 +51,7 @@ export async function GET(
     "5year": "1mo",
     max: "1mo",
   };
-  const interval = intervalMapping[time_range] || "1d";
+  const interval = (intervalMapping[time_range] || "1d") as "1d" | "1mo" | "1wk" | undefined;
 
   try {
     const data = await yahooFinance.historical(symbol, {

@@ -74,7 +74,7 @@ const StockStats: React.FC<StockStatsProps> = ({ symbol }) => {
         <div className={styles.statItem}>
           <span className={styles.label}>Trailing PE</span>
           <span className={styles.value}>
-            {stats.trailingPE?.toFixed(2) || "N/A"}
+            {stats.trailingPE !== null ? stats.trailingPE?.toFixed(2) : "N/A"}
           </span>
         </div>
         <div className={styles.statItem}>
@@ -92,13 +92,13 @@ const StockStats: React.FC<StockStatsProps> = ({ symbol }) => {
         <div className={styles.statItem}>
           <span className={styles.label}>Forward PE</span>
           <span className={styles.value}>
-            {stats.forwardPE !== undefined ? stats.forwardPE.toFixed(2) : "N/A"}
+            {stats.forwardPE !== null ? stats.forwardPE?.toFixed(2) : "N/A"}
           </span>
         </div>
         <div className={styles.statItem}>
           <span className={styles.label}>Dividend Yield</span>
           <span className={styles.value}>
-            {stats.dividendYield?.toFixed(2) || "N/A"}
+            {stats.dividendYield !== null ? stats.dividendYield?.toFixed(2) : "N/A"}
           </span>
         </div>
       </div>

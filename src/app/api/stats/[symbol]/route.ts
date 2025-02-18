@@ -19,29 +19,40 @@ function serialize(obj: any): any {
 
 export async function GET(
   request: Request,
-  { params }: { params: { symbol: string } }
+  context: { params: Promise<{ symbol: string }> }
 ) {
-  const { symbol } = params;
+  const { symbol } = await context.params;
   try {
     const ticker = await yahooFinance.quoteSummary(symbol, {
       modules: ["price", "defaultKeyStatistics"],
     });
-    const info = ticker.price || {};
+    const info = ticker.price;
+    
+    if (!info) {
+      return NextResponse.json(
+        { error: "No price data found" },
+        { status: 404 }
+      );
+    }
+
     const statsData = {
       marketCap: info.marketCap,
-      fiftyTwoWeekHigh: info.fiftyTwoWeekHigh,
-      fiftyTwoWeekLow: info.fiftyTwoWeekLow,
-      trailingPE: info.trailingPE,
+      fiftyTwoWeekHigh: null,
+      fiftyTwoWeekLow: null,
+      trailingPE: null,
       regularMarketOpen: info.regularMarketOpen,
       regularMarketPreviousClose: info.regularMarketPreviousClose,
-      forwardPE: info.forwardPE,
-      dividendYield: info.dividendYield,
+      forwardPE: null,
+      dividendYield: null,
       calendar: ticker.calendarEvents || {},
     };
 
     return NextResponse.json(serialize(statsData));
   } catch (error) {
     console.error("Error fetching stats:", error);
-    return NextResponse.json({ error: "Error fetching stats" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error fetching stats" }, 
+      { status: 500 }
+    );
   }
 }

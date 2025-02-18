@@ -12,6 +12,8 @@ import {
   Tooltip,
   Legend,
   ChartOptions,
+  LineController,
+  BarController,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
 import { formatNumber } from "@/utils/formatNumber";
@@ -19,6 +21,8 @@ import { useTheme } from "@/components/ThemeContext/ThemeContext";
 import styles from "@/components/PriceVolumeChart/PriceVolumeChart.module.scss";
 
 ChartJS.register(
+  LineController,
+  BarController,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -245,7 +249,7 @@ const PriceVolumeChart: React.FC<PriceVolumeChartProps> = ({ symbol }) => {
         <p style={{ color: fontColor }}>No chart data available.</p>
       ) : (
         <div className={styles.chartWrapper}>
-          <Chart data={chartData} options={options} />
+          <Chart data={chartData} options={options} type="bar" />
         </div>
       )}
     </div>

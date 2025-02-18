@@ -15,10 +15,9 @@ interface Order {
 
 interface OrderBookDashboardProps {
   symbol: string;
-  theme: "light" | "dark";
 }
 
-const OrderBookDashboard: React.FC<OrderBookDashboardProps> = ({ symbol, theme }) => {
+const OrderBookDashboard: React.FC<OrderBookDashboardProps> = ({ symbol }) => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedRange, setSelectedRange] = useState<string>("day");
@@ -46,7 +45,7 @@ const OrderBookDashboard: React.FC<OrderBookDashboardProps> = ({ symbol, theme }
   return (
     <div 
       className={styles.orderBookContainer}
-      data-theme={theme}
+      data-theme={'dark'}
     >
       <div className={styles.tableContainer}>
         <h2 className={styles.title}>

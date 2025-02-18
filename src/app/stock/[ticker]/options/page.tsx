@@ -3,10 +3,14 @@ import OptionsChainPage from "@/components/OptionsChain/OptionsChainPage";
 
 export const metadata = {
   title: "Options Chain",
-  description: "Full options chain data (calls and puts) for your selected stock.",
+  description: "Full options chain data for selected stock.",
 };
 
-export default function OptionsPage({ params }: { params: { ticker: string } }) {
-  const { ticker } = params;
+export default async function OptionsPage({
+  params,
+}: {
+  params: Promise<{ ticker: string }>
+}) {
+  const { ticker } = await params;
   return <OptionsChainPage symbol={ticker} />;
 }

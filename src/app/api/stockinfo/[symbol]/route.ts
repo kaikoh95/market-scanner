@@ -19,27 +19,27 @@ function serialize(obj: any): any {
 
 export async function GET(
   request: Request,
-  { params }: { params: { symbol: string } }
+  context: { params: Promise<{ symbol: string }> }
 ) {
-  const { symbol } = params;
+  const { symbol } = await context.params;
   try {
     // Get a quote summary with desired modules
     const ticker = await yahooFinance.quoteSummary(symbol, {
       modules: ["price", "calendarEvents", "defaultKeyStatistics"],
     });
 
-    const priceData = ticker.price || {};
-    const exchange = priceData.exchangeName || "N/A";
+    const priceData = ticker.price;
+    const exchange = priceData?.exchangeName || "N/A";
 
     // For upcoming news, we use calendarEvents.earningsDate as a sample.
     const upcomingNews =
-      ticker.calendarEvents && ticker.calendarEvents.earningsDate
+      ticker.calendarEvents && ticker.calendarEvents.earnings
         ? [
             {
               title: "Earnings Date",
               publisher: "",
               link: "",
-              providerPublishTime: ticker.calendarEvents.earningsDate,
+              providerPublishTime: ticker.calendarEvents.earnings.earningsDate,
             },
           ]
         : [];
