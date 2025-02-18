@@ -1,0 +1,67 @@
+@use "../../styles/_theme.scss" as theme;
+
+.container {
+  background-color: theme.$card-background;
+  color: theme.$text-primary;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: theme.$card-shadow;
+  margin: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dropdownContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.dropdownContainer select {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: #e0e0e0;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: theme.$accent-color;
+}
+
+.optionsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.optionsTable th,
+.optionsTable td {
+  padding: 8px;
+  border: 1px solid #444;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.noData {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+.loading, .error {
+  text-align: center;
+  font-size: 1.2rem;
+}

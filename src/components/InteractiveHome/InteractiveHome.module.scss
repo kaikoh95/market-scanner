@@ -1,0 +1,43 @@
+@use "../../styles/_theme.scss" as theme;
+
+.container {
+  background-color: theme.$background-primary;
+  color: theme.$text-primary;
+  width: 100%;
+  padding: 40px;
+  border-radius: 8px;
+  font-family: "Roboto", sans-serif;
+  box-shadow: theme.$card-shadow;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: theme.$nav-background;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.navTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 10px;
+}
+
+.card {
+  background-color: theme.$card-background;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: theme.$card-shadow;
+}

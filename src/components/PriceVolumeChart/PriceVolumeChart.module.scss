@@ -1,0 +1,62 @@
+@use "../../styles/_theme.scss" as theme;
+
+.chartContainer {
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.chartHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+}
+
+.stockSymbol {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.latestPrice {
+  font-size: 1.2rem;
+}
+
+.prevClose {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.percentChange {
+  font-size: 1.2rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tabButton {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  color: #000;
+  transition: background-color 0.3s ease;
+}
+
+.activeButton {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.chartWrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}

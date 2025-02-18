@@ -1,0 +1,55 @@
+@use "../../styles/_theme.scss" as theme;
+
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: "Fira Code", monospace;
+  padding: 20px;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #80cbc4;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #b2dfdb;
+}
+
+.form {
+  display: flex;
+  gap: 1rem;
+}
+
+.input {
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: "Fira Code", monospace;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 4px;
+  width: 300px;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.searchButton {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-family: "Fira Code", monospace;
+  border-radius: 8px;
+  border: none;
+  background-color: theme.$accent-color;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
